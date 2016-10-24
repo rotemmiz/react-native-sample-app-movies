@@ -66,29 +66,44 @@ class SearchBar extends React.Component {
           size="large"
           style={styles.spinner}
         />
-        <TouchableOpacity onPress={this.buttonClicked.bind(this)}>
-          <View style={styles.box}>
-            <Text>Act Busy</Text>
+        <TouchableOpacity onPress={this.actBusy.bind(this)}>
+          <View style={styles.button}>
+            <Text>Spam mqt_js</Text>
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={this.spamBridge.bind(this)}>
+          <View style={styles.button}>
+            <Text>Spam bridge</Text>
           </View>
         </TouchableOpacity>
       </View>
     );
   }
-
-
   
-  buttonClicked() {
-    setTimeout(() => { actBusyFor(8000); }, 500);
+  
+  
+  actBusy() {
+    setTimeout(() => { this.actBusyFor(8000); }, 500);
   }
-}
-
-function actBusyFor(milliseconds) {
+  
+  
+  actBusyFor(milliseconds) {
   var start = new Date().getTime();
   for (var i = 0; i < 1e7; i++) {
     if ((new Date().getTime() - start) > milliseconds) {
       break;
     }
   }
+}
+
+  spamBridge() {
+  for (var i = 0; i < 4; i++) {
+    setTimeout(function() {
+      console.log('spammer');
+      this.spamBridge();
+    }, 1);
+  }
+}
 }
 
 var styles = StyleSheet.create({
@@ -117,6 +132,9 @@ var styles = StyleSheet.create({
     height: 24,
     marginHorizontal: 8,
   },
+  button: {
+    margin: 2
+  }
 });
 
 module.exports = SearchBar;
