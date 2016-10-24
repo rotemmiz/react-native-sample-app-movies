@@ -24,7 +24,9 @@ var {
   ActivityIndicator,
   TextInput,
   StyleSheet,
+  TouchableOpacity,
   TouchableNativeFeedback,
+  Text,
   View,
 } = ReactNative;
 
@@ -64,8 +66,28 @@ class SearchBar extends React.Component {
           size="large"
           style={styles.spinner}
         />
+        <TouchableOpacity onPress={this.buttonClicked.bind(this)}>
+          <View style={styles.box}>
+            <Text>Act Busy</Text>
+          </View>
+        </TouchableOpacity>
       </View>
     );
+  }
+
+
+  
+  buttonClicked() {
+    setTimeout(() => { actBusyFor(8000); }, 500);
+  }
+}
+
+function actBusyFor(milliseconds) {
+  var start = new Date().getTime();
+  for (var i = 0; i < 1e7; i++) {
+    if ((new Date().getTime() - start) > milliseconds) {
+      break;
+    }
   }
 }
 
