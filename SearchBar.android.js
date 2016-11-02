@@ -35,13 +35,13 @@ var IS_RIPPLE_EFFECT_SUPPORTED = Platform.Version >= 21;
 class SearchBar extends React.Component {
   render() {
     var background = IS_RIPPLE_EFFECT_SUPPORTED ?
-      TouchableNativeFeedback.SelectableBackgroundBorderless() :
-      TouchableNativeFeedback.SelectableBackground();
+                     TouchableNativeFeedback.SelectableBackgroundBorderless() :
+                     TouchableNativeFeedback.SelectableBackground();
     return (
       <View style={styles.searchBar}>
         <TouchableNativeFeedback
-            background={background}
-            onPress={() => this.refs.input && this.refs.input.focus()}>
+          background={background}
+          onPress={() => this.refs.input && this.refs.input.focus()}>
           <View>
             <Image
               source={require('image!android_search_white')}
@@ -80,30 +80,38 @@ class SearchBar extends React.Component {
     );
   }
   
-  
-  
+  /**
+   * make mqt_js super busy
+   */
   actBusy() {
     setTimeout(() => { this.actBusyFor(8000); }, 500);
   }
   
   
   actBusyFor(milliseconds) {
-  var start = new Date().getTime();
-  for (var i = 0; i < 1e7; i++) {
-    if ((new Date().getTime() - start) > milliseconds) {
-      break;
+    var start = new Date().getTime();
+    for (var i = 0; i < 1e7; i++) {
+      if ((new Date().getTime() - start) > milliseconds) {
+        break;
+      }
     }
   }
-}
-
+  
   spamBridge() {
-  for (var i = 0; i < 4; i++) {
+    for (var i = 0; i < 1000; i++) {
+      this.initTimer();
+    }
+  }
+  
+  /**
+   * will send a message over MessageQueue.js to trigger the Native "Timing.createTimer()"
+   */
+  initTimer() {
+    const that = this;
     setTimeout(function() {
-      console.log('spammer');
-      this.spamBridge();
+      that.initTimer();
     }, 1);
   }
-}
 }
 
 var styles = StyleSheet.create({
