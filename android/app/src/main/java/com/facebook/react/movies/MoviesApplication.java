@@ -24,14 +24,12 @@ import com.facebook.react.shell.MainReactPackage;
 import java.util.Arrays;
 import java.util.List;
 
-import javax.annotation.Nullable;
-
 public class MoviesApplication extends Application implements ReactApplication {
   private final ReactNativeHost mReactNativeHost = new ReactNativeHost(this) {
 
     @Override
     protected boolean getUseDeveloperSupport() {
-      return true;
+      return BuildConfig.DEBUG;
     }
 
     @Override

@@ -15,7 +15,7 @@ package com.facebook.react.movies;
 
 import com.facebook.react.ReactActivity;
 
-public class MoviesActivity extends ReactActivity {
+public class MainActivity extends ReactActivity {
   @Override
   protected String getMainComponentName() {
     return "MoviesApp";
