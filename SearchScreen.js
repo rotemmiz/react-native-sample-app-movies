@@ -122,16 +122,10 @@ var SearchScreen = React.createClass({
 
     fetch(this._urlForQueryAndPage(query, 1))
       .then((response) => response.json())
-      .catch((error) => {
-        LOADING[query] = false;
-        resultsCache.dataForQuery[query] = undefined;
-
-        this.setState({
-          dataSource: this.getDataSource([]),
-          isLoading: false,
-        });
-      })
       .then((responseData) => {
+        if (!responseData) {
+          throw new Error('responseData is:' + responseData);
+        }
         LOADING[query] = false;
         resultsCache.totalForQuery[query] = responseData.total;
         resultsCache.dataForQuery[query] = responseData.movies;
@@ -145,6 +139,15 @@ var SearchScreen = React.createClass({
         this.setState({
           isLoading: false,
           dataSource: this.getDataSource(responseData.movies),
+        });
+      })
+      .catch((error) => {
+        LOADING[query] = false;
+        resultsCache.dataForQuery[query] = undefined;
+  
+        this.setState({
+          dataSource: this.getDataSource([]),
+          isLoading: false,
         });
       })
       .done();
