@@ -4,7 +4,11 @@ A standalone port of react-native/SampleAppMovies, for educational purposes
 
 This project is dedicated for react-native performance case studying, it is a standalone port of [Movies app](https://github.com/facebook/react-native/tree/master/Examples/Movies).
 
+## Installation:
+`npm install`
 
+## running Android:
+`react-native run-android` or through Android Studio
 
 
 
