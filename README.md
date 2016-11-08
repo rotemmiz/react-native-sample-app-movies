@@ -1,6 +1,6 @@
 
 # SampleAppMovies
-A standalone port of react-native/SampleAppMovies, for educational purposes
+A standalone port of react-native/SampleAppMovies, for educational purposes.<br>
 This app is being referenced in my medium post:
 https://medium.com/@rotemmiz/react-native-internals-a-wider-picture-part-1-messagequeue-js-thread-7894a7cba868#.qi3sx9o1a
 
